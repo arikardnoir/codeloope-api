@@ -11,7 +11,7 @@ namespace App\Http\Controllers\V1;
 /**
  * Description of AuthController
  *
- * @author carlosfernandes
+ * @author arikardnoir
  */
 use function auth;
 use function request;
