@@ -40,6 +40,8 @@ services:
             - "9000"
         volumes:
             - .:/var/www/html/api
+        environment:
+          - COMPOSER_MEMORY_LIMIT=-1
         networks:
             - backend
 

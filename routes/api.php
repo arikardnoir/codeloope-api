@@ -17,6 +17,15 @@ Route::get('test/', function () {
     echo "API Rodando";
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['apiJwt'], 'prefix' => 'auth',], function ($router) {
+
+    //User
+    Route::post('user/{id}', 'V1\\UserController@update');
+    Route::get('user/{id}', 'V1\\UserController@show');
+});
+
+
+Route::group(['prefix' => ''], function ($router) {
+    Route::post('user', 'V1\\UserController@store');
+    Route::post('login', 'V1\\AuthController@login');
 });
