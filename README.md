@@ -1,61 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+![alt text](http://www.faculdademaranhense.com.br/imagens/icone_portal_aluno.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# APi Codeloop-Test
 
-## About Laravel
+O micro-serviço `api` tem a responsabilidade de facilitar o registros de alunos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### DOCUMENTAÇÃO
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Para iniciar](#para-iniciar-o-serviço)
+- [Plataforma para execução do projeto](#plataforma-para-execução-do-projeto)
+- [Servidores/Portas](#servidores-e-portas)
+- [Design de software](#design-de-software)
+- [Framework](#framework)
+- [Pré-requisitos](#pré-requisitos)
+- [Comandos básicos](#comandos-básicos)
+- [Banco de dados](#banco-de-dados)
+- [Teste-Unintário](#teste-unintário)
+- [Link da collections](#link-da-collections)
+- [Erros](#erros)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Para iniciar o serviço 
+Essas instruções farão com que você tenha uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste. Veja a implantação de notas sobre como implantar o projeto em um sistema ativo.
 
-## Learning Laravel
+## Plataforma para execução do projeto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+php
+Docker
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Para mais informações clique [aqui](https://docs.docker.com/) para visitar a documentação oficial do docker
+Pode ler esse artigo de como criar containers com Laravel, PostgreSQL, PgAdmin e NGINX utilizando Docker CLI Para mais informações clique [aqui](https://medium.com/@carlosr.m.fernandes/como-criar-containers-com-laravel-postgresql-pgadmin-e-nginx-utilizando-docker-cli-ff3d57b00029)
 
-## Laravel Sponsors
+## Servidores e Portas 
+| Serviço | Porta  |
+|--|--|
+| nginx | 80 |
+| pgsql | 5432 |
+| pgadmin | 5050 |
+| php-fpm | 5050 |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Design de software
 
-### Premium Partners
+php
+S O L I D 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+## Framework
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+php
+Laravel
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Pré-requisitos
 
-## Security Vulnerabilities
+php
+Criar um diretório na are trabalho chamado Api
+Clonar o projecto dentro desse diretório
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+Executar o docker compuser
+php
+docker-compose up 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Comandos básicos 
+
+php
+#para entrar no container
+docker exec -it php-fpm sh
+
+#para entrar no diretório do projecto
+cd <Diretório do projecto>
+
+#para copiar as variáveis de ambiente 
+cp .env.docker.example .env
+
+#para instalar as dependência do projecto
+composer install
+
+
+## Banco de dados
+Configura o seu banco de dados 
+
+Acesse o container pgadmin via browser
+
+php
+localhost:5050
+
+EMAIL=user@domain.com
+PASSWORD=SuperSecret    
+
+
+Criar novo server no pgadmin
+
+php
+DB_CONNECTION=pgsql
+DB_HOST=postgresql
+DB_PORT=5432
+DB_DATABASE=dev
+DB_USERNAME=postgres
+DB_PASSWORD=root
+
+
+Acessar o container onde esta à aplicacão e dentro do diretório do projecto executar os seguinte comando
+
+php
+php artisan config:clear
+
+
+php
+composer dump-autoload
+
+
+php
+php artisan migrate
+
+
+php
+php artisan db:seed
+
+
+
+## Teste Unintário  
+
+Acessar o container onde esta à aplicacão e dentro do diretório do projecto execute o seguinte comando para executar os testes
+
+php
+vendor/bin/phpunit
+ou
+php artisan test
+
+
+## Sobre os testes 
+>Recomendamos o uso de qualquer ferramenta `client-rest` para testes nas chamadas da API.
+ 
+- INSOMNIA
+[https://insomnia.rest/download/](https://insomnia.rest/download/)
+
+- POSTMAN
+[https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
+
+## Chamadas da API	
+Documentação: 
+
+## Link da collections 
+Collections:
+
+## Erros
+
+> Se você detectar algum problema que não consiga solucionar, por favor nos informe e se possivel abra uma `issue` sobre..
