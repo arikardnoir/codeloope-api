@@ -22,6 +22,12 @@ Route::group(['middleware' => ['apiJwt'], 'prefix' => 'auth',], function ($route
     //User
     Route::post('user/{id}', 'V1\\UserController@update');
     Route::get('user/{id}', 'V1\\UserController@show');
+
+    //Student
+    Route::get('student', 'V1\\StudentController@index');
+    Route::post('student', 'V1\\StudentController@store');
+    Route::post('student/{id}', 'V1\\StudentController@update');
+    Route::get('student/{id}', 'V1\\StudentController@show');
 });
 
 
