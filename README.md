@@ -1,4 +1,4 @@
-![alt text](http://www.faculdademaranhense.com.br/imagens/icone_portal_aluno.png)
+![alt text](https://codeloop.com.br/wp-content/uploads/2021/05/Logo_Branca_PNG.png)
 
 # APi Codeloop-Test
 
