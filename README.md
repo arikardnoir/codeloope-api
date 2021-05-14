@@ -2,7 +2,7 @@
 
 # APi Codeloop-Test
 
-O micro-serviço `api` tem a responsabilidade de facilitar o registros de alunos
+O `codeloop-api` tem a responsabilidade de facilitar o registros de alunos
 
 ### DOCUMENTAÇÃO
 
